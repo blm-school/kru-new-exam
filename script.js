@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbygJE90BMEPD2HwLkbMGYF8z_raFAYV5fNre_AODSy9Irnl0fSvXKXrKbUJYOpBLqURlA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbyLame5ertqDH_NHwHVWna8uV26CrJWiZnOvMfSHrMRLeDQLYnvNI_O5gRSVsv1C3Zz/exec";
 
 let selectedExam = "";
 let currentEmail = "";
