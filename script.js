@@ -5,6 +5,22 @@ let currentEmail = "";
 
 window.onload = function() {
     checkLockStatus();
+
+    // 1. กด Enter ในช่อง Email ให้เรียก handleVerifyEmail()
+    document.getElementById('input-email')?.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // ป้องกันหน้าเว็บ Refresh
+            handleVerifyEmail();
+        }
+    });
+
+    // 2. กด Enter ในช่อง รหัสผ่านครู ให้เรียก handleUnlock()
+    document.getElementById('teacher-password')?.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            handleUnlock();
+        }
+    });
 };
 
 // [จุดที่ 3] อัปเดตฟังก์ชัน checkLockStatus เดิม
@@ -164,7 +180,8 @@ async function handleUnlock() {
 
     // ⭐ เงื่อนไข Admin Reset: ถ้าใส่ admin1234 ให้ปลดล็อกและเคลียร์ค่าคืนหน้าหลักทันที
     if (passwordInput === "admin1234") {
-        localStorage.clear(); // หรือลบเฉพาะคีย์: removeItem("isLocked"), removeItem("cheatCount"), ฯลฯ
+        localStorage.setItem("isLocked", "false");
+        localStorage.setItem("cheatCount", "0");
         document.getElementById('teacher-password').value = "";
         alert("🔓 Admin Reset เรียบร้อยแล้ว ระบบกำลังกลับสู่หน้าหลัก");
         fetchActiveExams(); // เรียกโหลดวิชาใหม่และสลับไปหน้า view-login
